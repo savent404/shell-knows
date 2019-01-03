@@ -1,5 +1,7 @@
 #!/bin/tcsh
 
+set val = "";
+
 while ($#argv > 0)
   switch($1:q)
   
@@ -11,7 +13,8 @@ while ($#argv > 0)
   
   case -opt2:
   case -opt2-long:
-    echo "Option opt2, got arg: "`$2:q\`;
+    echo "Option opt2, got arg: "\`$2:q\`;
+    set val = $2:q;
     shift;
     shift
     breaksw
@@ -21,3 +24,5 @@ while ($#argv > 0)
     exit 1
   endsw
 end
+
+echo $val
